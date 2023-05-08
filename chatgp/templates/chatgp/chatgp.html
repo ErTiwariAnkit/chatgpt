@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Welcome to HawkGPT-Ankit</h1>
+    <form method="post" action="{% url 'myapp:submit' %}">
+        {% csrf_token %}
+        <label for="input-field">Enter some text:</label>
+        <input type="text" id="input-field" name="input-field">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="response"></div>
+</body>
+</html>
+<script>
+    const form = document.querySelector('form');
+    const response = document.querySelector('#response');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const input = document.querySelector('#input-field').value;
+        fetch('{% url 'myapp:submit' %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: `input-field=${encodeURIComponent(input)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            response.innerHTML = data.response;
+        })
+        .catch(error => {
+            console.error(error);
+            response.innerHTML = 'An error occurred.';
+        });
+    });
+</script>

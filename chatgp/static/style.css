@@ -1,0 +1,47 @@
+/* Styles for the form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Styles for the response section */
+  /* Styles for the response section */
+#response {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f9f9f9;
+}
+
+.response-number {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+  
